@@ -21,7 +21,9 @@ if(n===1) return 1;
 return n*nFactorial(n-1)
 }
 
+
 function nFibonacci(n) {
+if(n<0) return undefined
 if(n===0) return 0;
 if(n===1) return 1;
 return nFibonacci(n-2)+nFibonacci(n-1)
@@ -31,13 +33,14 @@ console.log(nFibonacci(7))
 
 /*
 
-Secuencia: 0,1,1,3,5,8,13....
 
-nFinobacci(0)=0
-nFinobacci(1)=1
-nFinobacci(2)=0+1 (pero 0 lo saque de nFinobacci(0) y 1 de nFinobacci(1)), por tanto,  --->     nFinobacci(2)=nFinobacci(0)+nFinobacci(1)
-nFinobacci(3)=1+1 (pero 1 lo saque de nFinobacci(1) y 1 de nFinobacci(2)), por tanto,  --->     nFinobacci(3)=nFinobacci(1)+nFinobacci(2)
-nFinobacci(4)=1+2 (pero 1 lo saque de nFinobacci(2) y 2 de nFinobacci(3)), por tanto,  --->     nFinobacci(4)=nFinobacci(2)+nFinobacci(3)
+Secuencia: 0,1,1,2,3,5,8,13....
+
+nFibonacci(0)=0
+nFibonacci(1)=1
+nFibonacci(2)=0+1 (pero 0 lo saque de nFibonacci(0) y 1 de nFibonacci(1)), por tanto,  --->     nFinobacci(2)=nFinobacci(0)+nFinobacci(1)
+nFibonacci(3)=1+1 (pero 1 lo saque de nFibonacci(1) y 1 de nFibonacci(2)), por tanto,  --->     nFinobacci(3)=nFinobacci(1)+nFinobacci(2)
+nFibonacci(4)=1+2 (pero 1 lo saque de nFibonacci(2) y 2 de nFibonacci(3)), por tanto,  --->     nFinobacci(4)=nFinobacci(2)+nFinobacci(3)
 
 
 
@@ -53,10 +56,24 @@ Pueden utilizar class o función constructora.
 
 function Queue() {
   this.items=[]
-  this.enqueue=function(element){this.items.push(element)}
-  this.dequeue=function(){var eliminado=this.items[0]; this.items.shift(); return eliminado}
-  this.size=function(){return this.items.length}
+  this.enqueue=function(element){
+    this.items.push(element)}
+  this.dequeue=function(){
+    var eliminado=this.items[0]
+    if (this.items.length===0) return undefined
+    this.items.shift(); 
+    return eliminado
+  }
+  this.size=function(){
+    
+    return this.items.length}
 }
+
+
+
+
+
+
 
 
 
