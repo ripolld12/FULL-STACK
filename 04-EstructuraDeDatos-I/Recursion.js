@@ -1,4 +1,6 @@
-/*Recursión: Es una funcion que se llama a si misma cumpliendo con una condicion (parecido a un bucle)
+/*RECURSION: 
+
+Es una funcion que se llama a si misma cumpliendo con una condicion (parecido a un bucle)
 Por ejemplo:
 
 5!= 5*4*3*2*1 = 5*4! = 5*4*3! = 5*4*3*2! = 5*4*3*2*1!
@@ -58,7 +60,7 @@ function DecimalABinario(num) {
  
 
  function OtraVersion(num){
-    if(num===1) return 1 // Siempre ponemos una condicion que se cumpla y en la que no (else), ponemos la operacion que queremos hacer
+    if(num===1) return '1' // Siempre ponemos una condicion que se cumpla y en la que no (else), ponemos la operacion que queremos hacer
     return OtraVersion(Math.trunc(num/2))+(num%2).toString()
     
  }
@@ -75,5 +77,31 @@ function DecimalABinario(num) {
     return decimal
  }
 
- 
+function BinarioADecimal2(num){
+    if (num.length===0) return 0;
+    return (Math.pow(2,num.length-1))*(num[num.length-1])+BinarioADecimal2(num.slice(0,num.length-1))
+}
+
+console.log(BinarioADecimal2('101'))
+
+/* Metodo .slice(Posicion inicio, Posicion final) Indica de donde a donde debe tomar el nuevo numero 
+
+Ej:string = 'Me llamo Diana'
+string.slice(9,string.length) = Diana
+
+OTRA FORMA:
+*/
+
+function BinarioADecimal3(num){
+    if (num.length===0){ //Tiene que parar cuando se recorra todo el numero (cuando ya no haya numero que revisar)
+        return 0
+    }
+    let DigitoAMultiplicar=num[num.length-1]
+    let Resto=num.slice(0,num.length-1)
+    return (Math.pow(2,num.length-1))*DigitoAMultiplicar+BinarioADecimal3(Resto)
+}
+
+console.log(BinarioADecimal3('111'))
+
+
 
