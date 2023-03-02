@@ -27,15 +27,15 @@ otroContador()      // 2 */
 // console.log(newcounter())
 
 function counter(){
-  var i=1
+  var i=0
   return function(){
-    return i++
+    return ++i
   }
 }
 var newcounter=counter()
-var newcounter=counter()
-var newcounter=counter()
-var newcounter=counter()
+
+console.log(newcounter())
+
 
 
 /* Ejercicio 2
