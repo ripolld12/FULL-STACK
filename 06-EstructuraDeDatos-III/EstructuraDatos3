@@ -1,0 +1,54 @@
+/*ARBOLES (TREES): Es una estructura jerarquizada, que al igual que las linked list tienen nodos, pero esos nodos pueden conectarse a más de un elemento (nodo hijo)
+ARBOLES BINARIOS: Los nodos pueden conectarse a maximo dos elementos (nodos hijos)
+
+Todos los nodos del arbol seran instancias de la misma clase, es decir, todos los nodos tienen las mismas propiedades y metodos. Siendo aí, cada nodo puede ser un arbol.
+
+*/
+
+
+
+function BinarySearchTree(value){          // Tengo un arbol cuyo valor es value y este puede tener un brazo a la izquierda que apunta a un nodo, y un brazo a la derecha que apunta a otro nodo.
+    this.value = value
+    this.left = null                       // En este punto el arbol tiene un nodo raiz con dos brazos que no apuntan a nada
+    this.right = null
+}
+
+/* Para insertar nodos al arbol creo un metodo llamado .Insert()
+
+Supogamos que quiero agregar un nodo a la lista que ya tengo cuyo valor es 7, entonces haría .Insert(7) y mi condicion es que si es mayor que el valor del nodo actual, se va por un brazo y si es menor por el otro.
+
+1) Lo primero que se preguntará es si este es mayor o menor ... de acuerdo a eso sabe a donde va a apuntar el nodo
+2) Luego, se pregunta si en ese nodo hay algo... si no hay nada inserto el nodo nuevo, si hay algo:
+3) Si hay algo, le pregunto a ese nodo si es mayor o menor para saber donde apuntar 
+4) Luego, se pregunta si en ese nodo hay algo... si no hay nada inserto el nodo nuevo, si hay algo:
+5) Si hay algo, le pregunto a ese nodo si es mayor o menor para saber donde apuntar 
+
+Y así continúa....
+
+*/
+
+BinarySearchTree.prototype.insert = function(value){
+    if (value<this.value){
+        if(!this.left){
+            this.left= new BinarySearchTree(value)       // Se llama a si mismo de manera recursiva, es como si hubiera iterado
+            return value
+        }else{
+            this.left.insert(value)
+        }
+    }else{
+        if(!this.rigth){
+            this.rigth= new BinarySearchTree(value)
+            return value
+        }else{
+            this.rigth.insert(value)
+        }
+    }
+}
+
+/*Hay que entender que todos los nodos se comportan como arboles, asi que puedo llamarlos recursivamente*/
+
+/*MAX HEAP: Son arboles en donde los nodos hijos siempre son menores a los nodos padres
+
+RECORRIDOS: Un arbol binario tienen distintas formas de recorrerse 
+
+*/
